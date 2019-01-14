@@ -15,7 +15,7 @@ public class CallHelloController {
 
 	@RequestMapping("/hello")
 	public String call() {
-		ServiceInstance serviceInstance = loadBalancer.choose("service-producer");
+		ServiceInstance serviceInstance = loadBalancer.choose("consul-producer");
 		System.out.println("Service URL:" + serviceInstance.getUri());
 		System.out.println("Service Name:" + serviceInstance.getServiceId());
 		String callServiceResult = new RestTemplate().getForObject(serviceInstance.getUri().toString() + "/hello",
