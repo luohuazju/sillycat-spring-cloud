@@ -3,9 +3,14 @@ spring:
   name: springcloud-consul-producer
  cloud:
   consul:
-   host: localhost
+   host: ubuntu-master
    port: 8500
    discovery:
+    enabled: true
     serviceName: consul-producer
+    health-check-interval: 10s
+    register: true
+    health-check-path: /health
+    tags: owner=Sillycat
 server:
  port: 8501
