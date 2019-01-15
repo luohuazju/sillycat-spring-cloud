@@ -6,6 +6,7 @@ spring:
    host: ubuntu-master
    port: 8500
    discovery:
+    hostname: ubuntu-master
     enabled: true
     serviceName: consul-producer
     health-check-interval: 10s

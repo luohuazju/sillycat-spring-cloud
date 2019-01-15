@@ -6,6 +6,7 @@ spring:
    host: ubuntu-master
    port: 8500
    discovery:
+    hostname: centos-dev1
     enabled: true
     serviceName: consul-producer
     health-check-interval: 10s
