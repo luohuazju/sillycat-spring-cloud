@@ -4,9 +4,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sillycat</groupId>
-	<artifactId>webflux-with-latency</artifactId>
+	<artifactId>webflux-with-latency-jetty</artifactId>
 	<version>1.0.0</version>
-	<name>WebFlux with latency</name>
+	<name>WebFlux with latency with jetty</name>
 	<description>WebFlux with latency</description>
 
 	<parent>
@@ -26,6 +26,10 @@
 				<exclusion>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-reactor-netty</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
