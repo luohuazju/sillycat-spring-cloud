@@ -27,7 +27,7 @@ public class HelloController {
 			}
 			return String.format("processing nonblocking %s", latency);
 		});
-		return mono.subscribeOn(Schedulers.newElastic("go"));
+		return mono.subscribeOn(Schedulers.elastic());
 	}
 
 }
