@@ -30,4 +30,14 @@ public class HelloController {
 		return mono.subscribeOn(Schedulers.elastic());
 	}
 
+	@GetMapping("/slow/{latency}")
+	public Mono<String> slow(@PathVariable int latency) {
+		try {
+			Thread.sleep(latency);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return Mono.just("Welcome to reactive world " + latency);
+	}
+
 }
