@@ -16,4 +16,4 @@ spring:
  data:
   cassandra:
    keyspace-name: jobsmonitor
-   contact-points: ubuntu-master, ubuntu-dev2
+   contact-points: 10.3.10.96
