@@ -23,6 +23,7 @@ public class JobCountHistoryController {
 		return results;
 	}
 
+	
 	@Autowired
 	JobCountHistoryRepositoryCassandra jobCountHistoryRepositoryCassandra;
 
