@@ -21,7 +21,7 @@ public class RedisController {
 	@GetMapping("/redis/get/{key}")
 	public String get(@PathVariable String key) {
 		String response = redisTemplateString.opsForValue().get(key);
-		return "Fetch from Redis " + response;
+		return response;
 	}
 
 	@ApiOperation(value = "Redis Set")
