@@ -13,7 +13,17 @@ server:
  address: 0.0.0.0 
  port: 8081 
 spring:
- data:
-  cassandra:
-   keyspace-name: jobsmonitor
-   contact-points: ubuntu-master, ubuntu-dev2
+# data:
+#  cassandra:
+#   keyspace-name: jobsmonitor
+#   contact-points: ubuntu-master, ubuntu-dev2
+ redis:
+   cluster:
+    nodes: 
+     - ubuntu-master:7001
+     - ubuntu-master:7002
+     - ubuntu-master:7003
+     - ubuntu-dev2:7001
+     - ubuntu-dev2:7002
+     - ubuntu-dev2:7003
+    maxRedirects: 6
