@@ -13,6 +13,13 @@ server:
  address: 0.0.0.0 
  port: 8083
 spring:
+ jackson:
+  serialization:
+   FAIL_ON_EMPTY_BEANS: false
+ kafka:
+  consumer:
+   group-id: mvccluster
+  bootstrap-servers: ubuntu-master:9092, ubuntu-dev2:9092, ubuntu-dev4:9092
  data:
   cassandra:
    keyspace-name: jobsmonitor
