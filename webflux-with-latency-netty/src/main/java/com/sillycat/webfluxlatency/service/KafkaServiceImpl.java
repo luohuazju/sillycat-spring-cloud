@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 import reactor.kafka.receiver.KafkaReceiver;
 import reactor.kafka.receiver.ReceiverRecord;
 import reactor.kafka.sender.KafkaSender;
@@ -30,7 +31,7 @@ public class KafkaServiceImpl implements KafkaService {
 		((Flux<ReceiverRecord<Object, Object>>) kafkaReceiver.receive()).doOnNext(r -> {
 			processEvent(r.value().toString());
 			r.receiverOffset().acknowledge();
-		}).subscribe();
+		}).subscribeOn(Schedulers.elastic());
     }
 
 	private void processEvent(String message) {

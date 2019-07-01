@@ -11,7 +11,7 @@ management:
     include: health,info
 server:
  address: 0.0.0.0 
- port: 8081 
+ port: 8082
 spring:
  kafka:
   consumer:
