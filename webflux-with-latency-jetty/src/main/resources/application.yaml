@@ -12,3 +12,11 @@ management:
 server:
  address: 0.0.0.0 
  port: 8082
+spring:
+ jackson:
+  serialization:
+   FAIL_ON_EMPTY_BEANS: false
+ kafka:
+  consumer:
+   group-id: webflux-with-latency-jetty
+  bootstrap-servers: localhost:9092
