@@ -9,10 +9,14 @@
 	<name>WebFlux with latency with jetty</name>
 	<description>WebFlux with latency</description>
 
+	<properties>
+		<avro.version>1.10.1</avro.version>
+	</properties>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.5.RELEASE</version>
+		<version>2.4.1</version>
 		<relativePath />
 		<!-- lookup parent from repository -->
 	</parent>
@@ -77,6 +81,11 @@
 			<artifactId>swagger-parser</artifactId>
 			<version>1.0.39</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.avro</groupId>
+			<artifactId>avro</artifactId>
+			<version>${avro.version}</version>
+		</dependency>
 		<!-- Test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -121,6 +130,23 @@
 						<goals>
 							<goal>single</goal>
 						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.avro</groupId>
+				<artifactId>avro-maven-plugin</artifactId>
+				<version>${avro.version}</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>schema</goal>
+						</goals>
+						<configuration>
+							<sourceDirectory>${project.basedir}/src/main/resources/avro/</sourceDirectory>
+							<outputDirectory>${project.build.directory}/generated/avro</outputDirectory>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>

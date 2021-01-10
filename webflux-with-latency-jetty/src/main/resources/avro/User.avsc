@@ -1,0 +1,19 @@
+{
+  "namespace": "com.sillycat.webfluxlatency.model",
+  "type": "record",
+  "name": "User",
+  "fields": [
+    {
+      "name": "userName",
+      "type": "string"
+    },
+    {
+      "name": "userId",
+      "type": "string"
+    },
+     {
+       "name": "age",
+       "type": "int"
+     }
+  ]
+}
