@@ -24,20 +24,20 @@ public class KafkaServiceImpl implements KafkaService {
 	@Autowired
 	KafkaSender<String, User> kafkaSender;
 
-	@Autowired
-	KafkaReceiver<String, User> kafkaReceiver;
+//	@Autowired
+//	KafkaReceiver<String, User> kafkaReceiver;
 
-	@PostConstruct
-	public void init() {
-		((Flux<ReceiverRecord<String, User>>) kafkaReceiver.receive()).doOnNext(r -> {
-			processEvent(r.value());
-			r.receiverOffset().acknowledge();
-		}).subscribe();
-	}
-
-	private void processEvent(User user) {
-		log.info("received message:" + user.toString());
-	}
+//	@PostConstruct
+//	public void init() {
+//		((Flux<ReceiverRecord<String, User>>) kafkaReceiver.receive()).doOnNext(r -> {
+//			processEvent(r.value());
+//			r.receiverOffset().acknowledge();
+//		}).subscribe();
+//	}
+//
+//	private void processEvent(User user) {
+//		log.info("received message:" + user.toString());
+//	}
 
 	public Mono<SenderResult<Integer>> send(final String topicName, User user) {
 		log.info("send out message:" + user.toString());
