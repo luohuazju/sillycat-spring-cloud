@@ -5,15 +5,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
-
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import com.sillycat.springboot.restfulapi.akka.base.SpringExtension;
-
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import lombok.extern.slf4j.Slf4j;
 
 @SpringBootApplication
 @Slf4j
+@EnableJpaAuditing
 public class SillycatRestfulAPIApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) throws Exception {
