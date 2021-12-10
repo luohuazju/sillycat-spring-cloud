@@ -17,7 +17,7 @@ RUN         mv /etc/localtime /etc/localtime_bak
 RUN         ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
 WORKDIR     /share/
 
-ADD         target/netsuiteconnector-*-bundle.tar.gz /share/
+ADD         target/spring-boot-restful-*-bundle.tar.gz /share/
 
 #Start the Application
 RUN     mkdir -p /app/

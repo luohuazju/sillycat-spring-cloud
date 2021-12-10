@@ -2,6 +2,6 @@
 
 APPLICATION_SECRET="nosessionshere"
 
-cd /share/netsuiteconnector-*
+cd /share/spring-boot-restful-*
 bin/start-console.sh
 
