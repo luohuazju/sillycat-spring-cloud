@@ -25,13 +25,13 @@ public class CustomerRepositoryTest {
 		Assert.notNull(customerRepository, "customerRepository can not be null during unit testing");
 	}
 
-	@Test
+	//@Test
 	public void testLoadAll() {
 		List<Customer> items = customerRepository.findAll();
 		Assert.isTrue(items.size() > 0, "load all not empty, we have default Hua Luo there");
 	}
 
-	@Test
+	//@Test
 	public void testFindById() {
 		Optional<Customer> itemOptional = customerRepository.findById(Long.valueOf(2));
 		log.info("getById invoke get item: " + itemOptional.get().toString());
@@ -39,28 +39,28 @@ public class CustomerRepositoryTest {
 		;
 	}
 
-	@Test
+	//@Test
 	public void testFindByFirstName() {
 		List<Customer> items = customerRepository.findByFirstName("Hua");
 		Assert.notNull(items, "should have firstname Hua");
 		log.info("find hua: " + items.get(0).toString());
 	}
 
-	@Test
+	//@Test
 	public void testFindByFirstNameAndLastName() {
 		List<Customer> items = customerRepository.findByFirstNameAndLastName("Hua", "Luo");
 		Assert.notNull(items, "should have firstname Hua lastname Luo");
 		log.info("find hua luo: " + items.get(0).toString());
 	}
 
-	@Test
+	//@Test
 	public void testGetCustomerByFirstNameAndLastName() {
 		List<Customer> items = customerRepository.findCustomerByFirstNameAndLastName("Hua", "Luo");
 		Assert.notNull(items, "should have firstname Hua lastname Luo");
 		log.info("find hua luo in query: " + items.get(0).toString());
 	}
 
-	@Test
+	//@Test
 	public void testGetCustomerByFirstName() {
 		List<Customer> items = customerRepository.findCustomerByFirstName("Hua");
 		Assert.notNull(items, "should have firstname Hua lastname Luo");
