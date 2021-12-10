@@ -15,3 +15,13 @@ create user 'springbootrestfuldev'@'%' identified by 'springbootrestfuldev)(*&AS
 grant all on springboot_restful.* to 'springbootrestfuldev'@'%';
 flush privileges;
 ```
+
+### run the test
+```
+mvn clean test
+```
+
+### package without running test
+```
+mvn clean package -Dmaven.test.skip
+```
