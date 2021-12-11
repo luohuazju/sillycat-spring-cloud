@@ -2,5 +2,5 @@
 
 APPLICATION_SECRET="nosessionshere"
 
-cd /share/spring-boot-restful-*
+cd /app/spring-boot-restful-*
 bin/start-console.sh

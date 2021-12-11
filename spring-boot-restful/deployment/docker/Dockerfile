@@ -1,30 +1,18 @@
-#Run a Simple REST API based on playframework
-FROM            centos:7
+FROM maven:3.6.0-jdk-11 AS build
      
 LABEL maintainer="Yiyi Kang <yiyikangrachel@gmail.com>"
 
-ENV DEBIAN_FRONTEND="noninteractive"
+COPY . /app/spring-boot-restful
+WORKDIR /app/spring-boot-restful
+RUN mvn clean package -Dmaven.test.skip
+WORKDIR /app/spring-boot-restful/target
+RUN tar -xzf spring-boot-restful-1.0.0-bundle.tar.gz
 
-#Prepare System
-RUN	   yum --enablerepo=extras -y install epel-release
-RUN	   yum -y update
-
-#Install Java
-RUN         yum install -y java-1.8.0-openjdk
-
-#Install the Application
-RUN         mkdir /share/
-RUN         mv /etc/localtime /etc/localtime_bak
-RUN         ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
-WORKDIR     /share/
-
-ADD         target/spring-boot-restful-*-bundle.tar.gz /share/
-
-#Start the Application
-RUN     mkdir -p /app/
-ADD     deployment/docker/start.sh /app/
-WORKDIR /app
-CMD	[ "./start.sh" ]
+FROM gcr.io/distroless/java11-debian11
+COPY --from=build /app/spring-boot-restful/target/spring-boot-restful-1.0.0 /app/
+# COPY --from=build /app/spring-boot-restful/deployment/docker/start.sh /app/start.sh
+# WORKDIR /app
+# CMD	[ "./start.sh" ]
 
 
 
