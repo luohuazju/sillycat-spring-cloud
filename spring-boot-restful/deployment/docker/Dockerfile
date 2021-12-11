@@ -22,6 +22,7 @@ ADD         target/spring-boot-restful-*-bundle.tar.gz /share/
 
 #Start the Application
 RUN     mkdir -p /app/
+ADD     deployment/docker/start.sh /app/
 WORKDIR /app
 CMD	[ "./start.sh" ]
 
