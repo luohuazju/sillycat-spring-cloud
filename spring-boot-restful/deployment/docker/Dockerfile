@@ -1,6 +1,7 @@
 #Run a Simple REST API based on playframework
 FROM            centos:7
-MAINTAINER      Yiyi Kang <yiyikangrachel@gmail.com>
+     
+LABEL maintainer="Yiyi Kang <yiyikangrachel@gmail.com>"
 
 ENV DEBIAN_FRONTEND="noninteractive"
 

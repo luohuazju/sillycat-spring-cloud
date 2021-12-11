@@ -1,4 +1,12 @@
 
+### run the binary
+```
+mvn clean package -Dmaven.test.skip
+cd target
+tar zxvf spring-boot-restful-1.0.0-bundle.tar.gz
+cd spring-boot-restful-1.0.0
+bin/start-console.sh
+```
 
 ### Visit the Swagger Page
 http://localhost:9527/swagger-ui.html
