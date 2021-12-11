@@ -15,7 +15,7 @@ RUN tar -xzf spring-boot-restful-1.0.0-bundle.tar.gz
 # COPY --from=build /app/spring-boot-restful/target/spring-boot-restful-1.0.0 /app/
 # WORKDIR /app
 
-FROM openjdk:11-alpine
+FROM openjdk:11-jdk-slim
 COPY --from=build /app/spring-boot-restful/target/spring-boot-restful-1.0.0 /app/
 WORKDIR /app
 CMD	[ "java", "-Djava.net.preferIPv4Stack=true", "-XX:MaxMetaspaceSize=256M", "-XX:+HeapDumpOnOutOfMemoryError", "-Dspring.config.location=file:./conf/application.yaml", "-Dlogging.config=file:./conf/log4j2.xml", "-jar",  "./lib/spring-boot-restful-*.jar" ]
