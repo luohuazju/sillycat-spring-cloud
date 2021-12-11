@@ -10,15 +10,12 @@ RUN tar -xzf spring-boot-restful-1.0.0-bundle.tar.gz
 
 # FROM centos:7
 # COPY --from=build /app/spring-boot-restful/target/spring-boot-restful-1.0.0 /app/
-# COPY --from=build /app/spring-boot-restful/deployment/docker/start.sh /app/start.sh
 # WORKDIR /app
-# CMD	[ "./start.sh" ]
 
 FROM gcr.io/distroless/java11-debian11
 COPY --from=build /app/spring-boot-restful/target/spring-boot-restful-1.0.0 /app/
-COPY --from=build /app/spring-boot-restful/deployment/docker/start.sh /app/start.sh
 WORKDIR /app
-CMD	[ "./start.sh" ]
+CMD	[ "java", "-Djava.net.preferIPv4Stack=true", "-XX:MaxMetaspaceSize=256M -XX:+HeapDumpOnOutOfMemoryError", "-Dspring.config.location=file:./conf/application.yaml", "-Dlogging.config=file:./conf/log4j2.xml", "-jar ./lib/spring-boot-restful-*.jar" ]
 
 
 
