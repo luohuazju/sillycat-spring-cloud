@@ -14,10 +14,10 @@ build:
 	docker build -f deployment/docker/Dockerfile -t $(NAME):$(TAG) .
 
 run:
-	docker run -d -p 9527:9527 --name $(NAME) $(NAME):$(TAG)
+	docker run -d --network host --name $(NAME) $(NAME):$(TAG)
 	
 debug:
-	docker run -ti -p 9527:9527 --name $(NAME) $(NAME):$(TAG) /bin/bash
+	docker run -ti --network host --name $(NAME) $(NAME):$(TAG) /bin/bash
 
 clean:
 	docker stop $(NAME)
