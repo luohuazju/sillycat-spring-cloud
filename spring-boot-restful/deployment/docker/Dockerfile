@@ -1,28 +1,14 @@
-#Run a Simple REST API based on playframework
-FROM            centos:7
-MAINTAINER      Yiyi Kang <yiyikangrachel@gmail.com>
+FROM maven:3.6.0-jdk-11 AS build
+     
+LABEL maintainer="Yiyi Kang <yiyikangrachel@gmail.com>"
 
-ENV DEBIAN_FRONTEND="noninteractive"
+COPY . /app/spring-boot-restful
+WORKDIR /app/spring-boot-restful
+RUN mvn clean package -Dmaven.test.skip
+WORKDIR /app/spring-boot-restful/target
+RUN tar -xzf spring-boot-restful-1.0.0-bundle.tar.gz
 
-#Prepare System
-RUN	   yum --enablerepo=extras -y install epel-release
-RUN	   yum -y update
-
-#Install Java
-RUN         yum install -y java-1.8.0-openjdk
-
-#Install the Application
-RUN         mkdir /share/
-RUN         mv /etc/localtime /etc/localtime_bak
-RUN         ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
-WORKDIR     /share/
-
-ADD         target/netsuiteconnector-*-bundle.tar.gz /share/
-
-#Start the Application
-RUN     mkdir -p /app/
+FROM gcr.io/distroless/java11-debian11
+COPY --from=build /app/spring-boot-restful/target/spring-boot-restful-1.0.0 /app/
 WORKDIR /app
-CMD	[ "./start.sh" ]
-
-
-
+ENTRYPOINT ["java", "-Djava.net.preferIPv4Stack=true", "-XX:MaxMetaspaceSize=256M", "-XX:+HeapDumpOnOutOfMemoryError", "-Dspring.config.location=file:./conf/application.yaml", "-Dlogging.config=file:./conf/log4j2.xml", "-jar",  "./lib/spring-boot-restful-1.0.0.jar" ]

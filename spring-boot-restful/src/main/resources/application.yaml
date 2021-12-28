@@ -14,9 +14,9 @@ server:
  port: 9527 
 spring:
  datasource:
-  url: jdbc:mysql://localhost:3306/springboot_restful?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+  url: jdbc:mysql://centos7-master:3306/springboot_restful?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
   username: springbootrestfuldev
-  password: springbootrestfuldev
+  password: springbootrestfuldev)(*&ASD12367
   driver-class-name: com.mysql.cj.jdbc.Driver
  jpa:
   generate-ddl: true
