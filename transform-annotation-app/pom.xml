@@ -8,8 +8,6 @@
   <modules>
       <module>transform-annotations</module>
       <module>transform-processors</module>
-      <!--
       <module>transform-client</module>
-      -->
   </modules>
 </project>
