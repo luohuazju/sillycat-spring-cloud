@@ -23,8 +23,6 @@ import com.sillycat.processor.model.TypeEntry;
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 public class TransformerProcessor extends AbstractProcessor {
 
-	private final String transformerTemplate = "template/TransformerTemplate.vm";
-
 	public TransformerProcessor() {
 		super();
 	}
@@ -48,25 +46,24 @@ public class TransformerProcessor extends AbstractProcessor {
 				.map(TypeElement.class::cast).forEach(this::generateTransformer);
 		return true;
 	}
-	
+
 	private void generateTransformer(TypeElement orig) {
-        TypeEntry clazz = EntryFactory.of(orig.asType());
-        TransformerClass transformer = new TransformerClass(clazz, processingEnv);
+		TypeEntry clazz = EntryFactory.of(orig.asType());
+		TransformerClass transformer = new TransformerClass(clazz, processingEnv);
 
-        List<TypeEntry> fromTypes = TypeEntry.getTransformerClasses(clazz, "from");
-        List<TypeEntry> toTypes = TypeEntry.getTransformerClasses(clazz, "to");
+		List<TypeEntry> fromTypes = TypeEntry.getTransformerClasses(clazz, "from");
+		List<TypeEntry> toTypes = TypeEntry.getTransformerClasses(clazz, "to");
 
-        fromTypes.forEach(c -> transformer.addTransformerMethod(TransformerMethod.of(c, clazz, "from"+c.getName())));
-        toTypes.forEach(c -> transformer.addTransformerMethod(TransformerMethod.of(clazz, c, "to"+c.getName())));
+		fromTypes.forEach(c -> transformer.addTransformerMethod(TransformerMethod.of(c, clazz, "from" + c.getName())));
+		toTypes.forEach(c -> transformer.addTransformerMethod(TransformerMethod.of(clazz, c, "to" + c.getName())));
 
-        final Filer filer = processingEnv.getFiler();
-        try {
-            transformer.generate().writeTo(filer);
+		final Filer filer = processingEnv.getFiler();
+		try {
+			transformer.generate().writeTo(filer);
 		} catch (IOException ex) {
-            throw new TransformerProcessingException(orig, "could not output processing result to file '"
-                    + clazz.getName() + "Transformer"
-                    + "'.", ex);
-        }
-    }
+			throw new TransformerProcessingException(orig,
+					"could not output processing result to file '" + clazz.getName() + "Transformer" + "'.", ex);
+		}
+	}
 
 }

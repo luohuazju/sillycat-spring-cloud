@@ -3,7 +3,6 @@ package com.sillycat.processor.model;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.lang.model.element.AnnotationMirror;
@@ -49,7 +48,8 @@ public interface TypeEntry {
         return Optional.empty();
     }
 
-    static List<TypeEntry> getTransformerClasses(TypeEntry clazz, String key) {
+    @SuppressWarnings("unchecked")
+	static List<TypeEntry> getTransformerClasses(TypeEntry clazz, String key) {
         return clazz.getAnnotationMirror(Transformer.class)
                 .flatMap(annotation -> TypeEntry.getAnnotationValue(annotation, key))
                 .map(annotation -> (List<AnnotationValue>)annotation.getValue())
