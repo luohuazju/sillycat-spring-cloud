@@ -1,0 +1,13 @@
+transform-processors/.classpath
+transform-processors/.project
+transform-processors/.settings
+transform-annotations/target
+transform-processors/target
+transform-annotations/.settings
+transform-annotations/.project
+transform-annotations/.classpath
+transform-client/target
+transform-client/.settings
+transform-client/.classpath
+transform-client/.project
+transform-client/.factorypath
