@@ -40,7 +40,7 @@ public class SillycatRestfulAPIApplication extends SpringBootServletInitializer 
 			Properties properties = new Properties();
 			properties.put("serverAddr", serverAddr);
 			properties.put("username","nacos");
-	        properties.put("password","kaishi117A");
+	        properties.put("password","xxxxxxxxx");
 			ConfigService configService = NacosFactory.createConfigService(properties);
 			String content = configService.getConfig(dataId, group, 5000);
 			log.info("get the nacos configuration-------------------------");
