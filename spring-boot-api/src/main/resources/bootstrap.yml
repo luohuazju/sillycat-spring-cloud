@@ -13,6 +13,7 @@ spring:
       discovery:
         serviceName: spring-boot-api
         healthCheckUrl: http://${server.address}:${server.port}/springbootapi/actuator/health
+        instanceId: ${spring.application.name}-${server.address}-${server.port}
         healthCheckInterval: 5s
       config:
         import-check:
