@@ -12,7 +12,7 @@ spring:
       port: 80
       discovery:
         serviceName: spring-boot-api
-        healthCheckUrl: http://${server.address}:${server.port}${server.servlet.context-path}/actuator/health
+        healthCheckUrl: http://${server.address}:${server.port}/springbootapi/actuator/health
         healthCheckInterval: 5s
       config:
         import-check:
