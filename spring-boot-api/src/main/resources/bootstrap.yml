@@ -12,8 +12,8 @@ spring:
       port: 80
       discovery:
         serviceName: spring-boot-api
+        healthCheckUrl: http://${server.address}:${server.port}/springbootapi/actuator/health
         instanceId: ${spring.application.name}-${server.address}-${server.port}
-        healthCheckUrl: http://${server.address}:${server.port}${server.servlet.context-path}/actuator/health
         healthCheckInterval: 5s
         healthCheckCriticalTimeout: 10m
       config:
