@@ -1,0 +1,19 @@
+server:
+  port: 8528
+spring:
+  application:
+    name: consul-config-client
+  cloud:
+    consul:
+      host: centos7-master
+      port: 80
+      discovery:
+        serviceName: consul-config-client
+      config:
+        import-check:
+          enabled: false
+        enabled: true 
+        format: yaml 
+        prefix: config
+        profile-separator: ':'
+        data-key: data
