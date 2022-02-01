@@ -4,6 +4,8 @@ server:
   servlet:
     context-path: /springbootapi
 spring:
+  profiles:
+    active: dev
   application:
     name: spring-boot-api
   cloud:
@@ -13,7 +15,7 @@ spring:
       discovery:
         serviceName: spring-boot-api
         healthCheckUrl: http://${server.address}:${server.port}/springbootapi/actuator/health
-        instanceId: ${spring.application.name}-${server.address}-${server.port}
+        instanceId: ${spring.application.name}-${server.address}-${server.port}-${spring.profiles.active}
         healthCheckInterval: 5s
         healthCheckCriticalTimeout: 10m
       config:
