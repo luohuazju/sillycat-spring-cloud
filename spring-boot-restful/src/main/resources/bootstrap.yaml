@@ -1,0 +1,30 @@
+server:
+  address: 0.0.0.0
+  port: 9527
+spring:
+  application:
+    name: spring-boot-restful
+  datasource:
+   url: jdbc:mysql://centos7-master:3306/springboot_restful?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+   username: springbootrestfuldev
+   password: springbootrestfuldev)(*&ASD12367
+   driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+   generate-ddl: true
+   show-sql: true
+  cloud:
+    compatibility-verifier:
+      enabled: false
+    consul:
+      host: centos7-master
+      port: 80
+      discovery:
+        serviceName: spring-boot-restful
+      config:
+        import-check:
+          enabled: false
+        enabled: true 
+        format: yaml 
+        prefix: config
+        profile-separator: ':' 
+        data-key: data 
