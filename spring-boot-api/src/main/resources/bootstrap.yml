@@ -1,0 +1,19 @@
+server:
+  port: 8528
+spring:
+  application:
+    name: spring-boot-api
+  cloud:
+    consul:
+      host: centos7-master
+      port: 80
+      discovery:
+        serviceName: spring-boot-api
+      config:
+        import-check:
+          enabled: false
+        enabled: true 
+        format: yaml 
+        prefix: config
+        profile-separator: ':'
+        data-key: data
