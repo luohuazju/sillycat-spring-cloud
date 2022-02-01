@@ -6,7 +6,8 @@ app-build:
 
 app-run:
 	java -Djava.net.preferIPv4Stack=true \
-	 -Dspring.profiles.active=dev
+	 -Dspring.profiles.active=dev \
+	 -Dserver.address=localhost \
 	 -XX:MaxMetaspaceSize=256M -XX:+HeapDumpOnOutOfMemoryError \
 	 -XX:HeapDumpPath="/tmp/dump_oom.hprof" \
 	 -jar ./target/spring-boot-api-*.jar
