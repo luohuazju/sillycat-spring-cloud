@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 @AllArgsConstructor
 @Data
-@ConfigurationProperties("configBeanAuthor")
+@ConfigurationProperties("config-bean-author")
 public class ConfigBeanAuthor {
 	
 	private Long id;
