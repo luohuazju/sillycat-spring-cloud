@@ -21,7 +21,7 @@ spring:
         tags: 
           - traefik.enable=true 
           - traefik.http.routers.springbootapi.rule=Host(`springbootapi.sillycat.com`)
-          - traefik.http.services.nodestarter.loadbalancer.server.port=9527
+          - traefik.http.services.nodestarter.loadbalancer.server.port=9528
       config:
         import-check:
           enabled: false
