@@ -17,11 +17,11 @@ spring:
         healthCheckUrl: http://${server.address}:${server.port}/springbootapi/actuator/health
         instanceId: ${spring.application.name}-${server.address}-${server.port}-${spring.profiles.active}
         healthCheckInterval: 5s
-        healthCheckCriticalTimeout: 10m
+        healthCheckCriticalTimeout: 1m
         tags: 
           - traefik.enable=true 
           - traefik.http.routers.springbootapi.rule=Host(`springbootapi.sillycat.com`)
-          - traefik.http.services.nodestarter.loadbalancer.server.port=9528
+          - traefik.http.services.springbootapi.loadbalancer.server.port=9528
       config:
         import-check:
           enabled: false
