@@ -13,6 +13,8 @@ spring:
       host: centos7-master
       port: 80
       discovery:
+        hostname: centos7-master
+        port: 9528
         serviceName: springbootapi
         healthCheckUrl: http://${server.address}:${server.port}/springbootapi/actuator/health
         instanceId: ${spring.application.name}-${server.address}-${server.port}-${spring.profiles.active}
