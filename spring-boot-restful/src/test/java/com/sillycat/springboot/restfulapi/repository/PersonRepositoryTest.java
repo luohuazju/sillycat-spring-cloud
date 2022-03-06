@@ -43,7 +43,7 @@ public class PersonRepositoryTest {
 		addressRepository.save(a);
 	}
 	
-	@Test
+	//@Test
 	public void testFindById() {
 		Optional<Person> p = personRepository.findById(Long.valueOf(1));
 		Assert.notNull(p.get(), "Person should be there");

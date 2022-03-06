@@ -1,0 +1,34 @@
+server:
+  address: centos7-master
+  port: 9528
+  servlet:
+    context-path: /springbootapi
+spring:
+  profiles:
+    active: dev
+  application:
+    name: springbootapi
+  cloud:
+    consul:
+      host: centos7-master
+      port: 80
+      discovery:
+        hostname: centos7-master
+        port: 9528
+        serviceName: springbootapi
+        healthCheckUrl: http://${server.address}:${server.port}/springbootapi/actuator/health
+        instanceId: ${spring.application.name}-${server.address}-${server.port}-${spring.profiles.active}
+        healthCheckInterval: 5s
+        healthCheckCriticalTimeout: 1m
+        tags: 
+          - traefik.enable=true 
+          - traefik.http.routers.springbootapi.rule=Host(`springbootapi.sillycat.com`)
+          - traefik.http.services.springbootapi.loadbalancer.server.port=9528
+      config:
+        import-check:
+          enabled: false
+        enabled: true 
+        format: yaml 
+        prefix: config
+        profile-separator: ':'
+        data-key: data

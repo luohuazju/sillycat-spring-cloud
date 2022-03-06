@@ -1,24 +1,3 @@
-info:
- app:
-  name: Springboot MicroService API
-  java:
-   version: 1.0.0
-  type: Microservice API
-management:
- endpoints:
-  web:
-   exposure:
-    include: health,info
-server:
- address: 0.0.0.0 
- port: 9527 
 spring:
- datasource:
-  url: jdbc:mysql://centos7-master:3306/springboot_restful?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-  username: springbootrestfuldev
-  password: springbootrestfuldev)(*&ASD12367
-  driver-class-name: com.mysql.cj.jdbc.Driver
- jpa:
-  generate-ddl: true
-  show-sql: true
-         
+  profiles:
+    active: dev         
