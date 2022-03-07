@@ -20,3 +20,9 @@ spring:
   consumer:
    group-id: webflux-with-latency-jetty
   bootstrap-servers: localhost:9092
+ org:
+  jobrunr:
+   background-job-server:
+    enabled: true
+   dashboard: 
+    enabled: true

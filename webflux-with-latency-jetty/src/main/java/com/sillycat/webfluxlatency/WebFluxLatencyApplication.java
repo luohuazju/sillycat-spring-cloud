@@ -21,4 +21,5 @@ public class WebFluxLatencyApplication extends SpringBootServletInitializer {
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(WebFluxLatencyApplication.class);
 	}
+	
 }
