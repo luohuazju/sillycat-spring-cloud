@@ -1,0 +1,16 @@
+server:
+  address: localhost
+  port: 9527
+  servlet:
+    context-path: /springbootjob
+spring:
+  profiles:
+    active: dev
+  application:
+    name: springbootjob
+org:
+ jobrunr:
+  background-job-server:
+   enabled: true
+  dashboard:
+   enabled: true
