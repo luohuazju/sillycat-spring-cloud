@@ -14,3 +14,4 @@ org:
    enabled: true
   dashboard:
    enabled: true
+   port: 9528
