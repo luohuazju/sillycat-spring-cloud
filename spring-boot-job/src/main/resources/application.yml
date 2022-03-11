@@ -8,6 +8,14 @@ spring:
     active: dev
   application:
     name: springbootjob
+  datasource:
+   url: jdbc:mysql://centos7-master:3306/springboot_job?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+   username: spring
+   password: springbootrestfuldev)(*&ASD12367
+   driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+   generate-ddl: true
+   show-sql: true
 org:
  jobrunr:
   background-job-server:

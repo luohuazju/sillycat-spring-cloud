@@ -11,3 +11,13 @@ app-run:
 	 -XX:MaxMetaspaceSize=256M -XX:+HeapDumpOnOutOfMemoryError \
 	 -XX:HeapDumpPath="/tmp/dump_oom.hprof" \
 	 -jar ./target/spring-boot-job-*.jar
+
+app-run2:
+	java -Djava.net.preferIPv4Stack=true \
+	 -Dspring.profiles.active=stage \
+	 -Dserver.address=localhost \
+	 -Dserver.port=9529 \
+	 -Dorg.jobrunr.dashboard.port=9530 \
+	 -XX:MaxMetaspaceSize=256M -XX:+HeapDumpOnOutOfMemoryError \
+	 -XX:HeapDumpPath="/tmp/dump_oom.hprof" \
+	 -jar ./target/spring-boot-job-*.jar
