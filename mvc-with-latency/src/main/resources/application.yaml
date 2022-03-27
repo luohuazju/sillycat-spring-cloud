@@ -4,6 +4,9 @@ info:
   java:
    version: 1.0.0
   type: Microservice API
+leveldb:
+ dir:
+  path: "/opt/leveldb/db1"
 management:
  endpoints:
   web:
