@@ -1,0 +1,10 @@
+server:
+  address: localhost
+  port: 9527
+  servlet:
+    context-path: /openapi
+spring:
+  profiles:
+    active: dev
+  application:
+    name: springbootopenapi
