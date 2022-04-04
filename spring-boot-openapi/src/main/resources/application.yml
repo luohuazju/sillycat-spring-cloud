@@ -8,3 +8,6 @@ spring:
     active: dev
   application:
     name: springbootopenapi
+springdoc:
+  api-docs:
+    path: /v1/api-docs
