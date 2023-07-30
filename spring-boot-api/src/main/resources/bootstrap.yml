@@ -1,6 +1,6 @@
 server:
-  address: centos7-master
-  port: 9528
+  address: localhost
+  port: 9529
   servlet:
     context-path: /springbootapi
 spring:
