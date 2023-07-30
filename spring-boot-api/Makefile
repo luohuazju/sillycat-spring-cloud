@@ -10,7 +10,7 @@ app-run:
 	 -Dserver.address=centos7-master \
 	 -XX:MaxMetaspaceSize=256M -XX:+HeapDumpOnOutOfMemoryError \
 	 -XX:HeapDumpPath="/tmp/dump_oom.hprof" \
-	 -jar ./target/spring-boot-api-*.jar
+	 -jar ./target/springbootapi-*.jar
 
 build:
 	docker build -f deployment/docker/Dockerfile -t $(NAME):$(TAG) .
