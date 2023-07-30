@@ -17,9 +17,6 @@ build:
 
 run:
 	docker run -d --network host --name $(NAME) $(NAME):$(TAG)
-	
-debug:
-	docker run -ti --network host --name $(NAME) $(NAME):$(TAG) /bin/bash
 
 clean:
 	docker stop $(NAME)
