@@ -6,15 +6,22 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.sillycat.webfluxlatency.services.JobServiceImpl;
+
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
 @Configuration
+@Slf4j
 public class WebClientConfig {
 
-	@Value("${basic.auth.username}")
+	@Value("${consul.host}")
+	private String consulHost;
+
+	@Value("${consul.auth.username}")
 	private String username;
 
-	@Value("${basic.auth.password}")
+	@Value("${consul.auth.password}")
 	private String password;
 
 	@Bean
@@ -23,10 +30,7 @@ public class WebClientConfig {
 	}
 
 	private ExchangeFilterFunction basicAuthentication(String username, String password) {
-		// String credentials = username + ":" + password;
-		// String encodedCredentials =
-		// java.util.Base64.getEncoder().encodeToString(credentials.getBytes());
-
+		log.info("consul username = " + username + " password = " + password);
 		return ExchangeFilterFunction.ofRequestProcessor(clientRequest -> {
 			clientRequest.headers().setBasicAuth(username, password);
 			return Mono.just(clientRequest);
@@ -35,8 +39,8 @@ public class WebClientConfig {
 
 	@Bean
 	public WebClient webClient(WebClient.Builder webClientBuilder) {
-		return webClientBuilder.baseUrl("https://api.example.com").filter(basicAuthentication(username, password))
-				.build();
+		log.info("consul username = " + username + " password = " + password);
+		return webClientBuilder.baseUrl(consulHost).filter(basicAuthentication(username, password)).build();
 	}
 
 }

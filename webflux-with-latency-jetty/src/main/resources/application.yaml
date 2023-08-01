@@ -12,6 +12,11 @@ management:
 server:
  address: 0.0.0.0 
  port: 8082
+consul:
+ host: https://consulnext.sillycat.com
+ auth:
+  username: admin
+  password: admin
 spring:
  jackson:
   serialization:

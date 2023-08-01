@@ -18,9 +18,9 @@ public class ConfigController {
 	
 	@ApiOperation(value = "get config", response = String.class)
 	@GetMapping("/config/default")
-    public Mono<String> getExternalData() {
+    public Mono<String> getDefault() {
         return webClient.get()
-                .uri("/data")
+                .uri("/v1/kv/sillycat.config")
                 .retrieve()
                 .bodyToMono(String.class);
     }
