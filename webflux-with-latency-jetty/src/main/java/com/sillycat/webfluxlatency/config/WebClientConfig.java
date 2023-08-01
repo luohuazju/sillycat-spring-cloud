@@ -24,23 +24,19 @@ public class WebClientConfig {
 	@Value("${consul.auth.password}")
 	private String password;
 
+	
 	@Bean
 	public WebClient.Builder webClientBuilder() {
 		return WebClient.builder();
 	}
 
-	private ExchangeFilterFunction basicAuthentication(String username, String password) {
-		log.info("consul username = " + username + " password = " + password);
-		return ExchangeFilterFunction.ofRequestProcessor(clientRequest -> {
-			clientRequest.headers().setBasicAuth(username, password);
-			return Mono.just(clientRequest);
-		});
-	}
 
 	@Bean
 	public WebClient webClient(WebClient.Builder webClientBuilder) {
 		log.info("consul username = " + username + " password = " + password);
-		return webClientBuilder.baseUrl(consulHost).filter(basicAuthentication(username, password)).build();
+		return webClientBuilder.baseUrl(consulHost)
+				.defaultHeaders(headers -> headers.setBasicAuth(username, password))
+				.build();
 	}
 
 }

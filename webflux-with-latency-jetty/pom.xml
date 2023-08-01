@@ -8,11 +8,9 @@
 	<version>1.0.0</version>
 	<name>WebFlux with latency with jetty</name>
 	<description>WebFlux with latency</description>
-
 	<properties>
 		<avro.version>1.10.1</avro.version>
 	</properties>
-
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -20,7 +18,6 @@
 		<relativePath />
 		<!-- lookup parent from repository -->
 	</parent>
-
 	<dependencies>
 		<!-- spring-boot -->
 		<dependency>
@@ -107,6 +104,11 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>io.projectreactor.netty</groupId>
+			<artifactId>reactor-netty</artifactId>
+			<version>1.1.9</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -157,7 +159,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
 	<repositories>
 		<repository>
 			<id>spring-snapshots</id>
@@ -182,4 +183,3 @@
 		</pluginRepository>
 	</pluginRepositories>
 </project>
-
