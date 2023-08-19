@@ -17,6 +17,9 @@ consul:
  auth:
   username: admin
   password: admin
+vault:
+ host: vaultnext.sillycat.com
+ token: token12345
 spring:
  jackson:
   serialization:
